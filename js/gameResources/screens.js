@@ -10,3 +10,4 @@ gameResources.addScreenGraphics = function addScreenGraphics(name, source){
 }
 gameResources.addScreenGraphics("titleScreen","data/GUI/titleScreen.png");
 gameResources.addScreenGraphics("storyScreen","data/GUI/scroll.png");
+gameResources.addScreenGraphics("gameover","data/GUI/endGame.png");

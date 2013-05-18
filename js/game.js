@@ -1,4 +1,5 @@
 var playScreenGlobalObject;
+var gameOverScreenGlobalObject;
 
 var game = {	
 	/* ---
@@ -44,9 +45,11 @@ var game = {
 		playScreenGlobalObject = new PlayScreen();
 		me.state.set(me.state.PLAY, playScreenGlobalObject);
 		
+		// set the Game over screen
+		gameOverScreenGlobalObject = new game.GameOverScreen();
+		me.state.set(me.state.OVER, gameOverScreenGlobalObject);
+		
 		me.state.set(STORY_STATE, new StoryScreen());
-	    
-	   
 	    
 		// set a global fading transition for the screen
 	    me.state.transition("fade", "#FFFFFF", 250);
