@@ -108,6 +108,27 @@ var appleEntity = entity("appleEntity", me.CollectableEntity.extend({
 
 }));
 
+var successButton = entity("successButton", me.CollectableEntity.extend({
+   // extending the init function is not mandatory
+   // unless you need to add some extra initialization
+   init: function(x, y, settings) {
+       // call the parent constructor
+       this.parent(x, y, settings);
+       this.type = settings.type;
+   },
+
+    // call by the engine when colliding with another object
+    // obj parameter corresponds to the other object (typically the player) touching this one
+    onCollision: function(res, obj) {
+      	// do something when collected
+       	if(obj.name == "mainplayer" ){
+        	obj.ammo += 5;
+       		me.game.remove(this);
+        }
+   }
+
+}));
+
 var breakableIceEntity = entity("breakableIceEntity", me.ObjectEntity.extend({
 	
    init: function(x, y, settings) {
@@ -183,7 +204,7 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
    
    onCollision: function(res, obj) {
        //do something when collide
-      if(obj.name == "mainplayer" ){		
+    if(obj.name == "mainplayer" ){		
 		//alert("hit!");
 		if(obj.vel.x > 0){
 			this.pos.x+=3;
@@ -191,7 +212,11 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
 		else if(obj.vel.x < 0){
 			this.pos.x-=3;
 		}
-    }
+	}
+	else if(obj.name == "sunlight" ){		
+		//Send the sunlight particles going vertically now!
+		
+	}
 
 }}));
 
@@ -210,15 +235,15 @@ KeyEntity = entity("key", me.ObjectEntity.extend({
    
    onCollision: function(res, obj) {
        //do something when collide
-      if(obj.name == "mainplayer" ){		
+      if(obj.name == "sunlight"){		
 		//alert("hit!");
-		if(obj.vel.x > 0){
-			this.pos.x+=3;
+		this.pos.y-=10;
 		}
-		else if(obj.vel.x < 0){
-			this.pos.x-=3;
+		else if(obj.name == "mainPlayer")
+		{
+			//player has gotten the key! they should now be able to open the door
+			obj.isKeyGotten = true;
 		}
-    }
 
 }}));
 
@@ -397,6 +422,7 @@ itemEntity.push(moveEntityYAxis);
 itemEntity.push(mushroomEntity);
 itemEntity.push(healthEntity);
 itemEntity.push(appleEntity);
+itemEntity.push(successButton);
 itemEntity.push(teleporterEntity);
 itemEntity.push(ropeEntity);
 itemEntity.push(MirrorEntity);

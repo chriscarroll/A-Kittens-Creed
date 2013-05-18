@@ -61,9 +61,7 @@ StoryEntity = me.InvisibleEntity.extend({
     // an object is touched by something (here collected)
     onCollision: function(res, obj) {
         // do something when collected
-        console.log('story hit!');
-
-        if(obj.name == "mainplayer" ){
+        if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
             localStorage.currentPlayerHealth = obj.health;
             localStorage.currentPlayerAmmo = obj.ammo;
             StoryManager.tellFullscreenStory(this.story);
