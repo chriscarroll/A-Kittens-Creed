@@ -96,7 +96,7 @@ var TitleScreen = me.ScreenObject.extend({
     draw: function(context) {
         context.drawImage(this.title, 0, 0);
 
-        this.font.draw(context, "LEAFY JUSTICE", 100, 40);
+        this.font.draw(context, "A KITTEN'S CREED", 100, 40);
         this.font.draw(context, "NEW GAME", 40, 340);
         this.font.draw(context, "LOAD GAME", 40, 420);
         this.drawArrow(context);

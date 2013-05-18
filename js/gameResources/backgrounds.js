@@ -10,3 +10,4 @@ gameResources.addBackground = function addBackground(name, source){
 }
 gameResources.addBackground("area01_bkg0","data/area01_parallax/area01_bkg0.png");
 gameResources.addBackground("area01_bkg1","data/area01_parallax/area01_bkg1.png");
+gameResources.addBackground("level1background","data/background/level1background.jpg");

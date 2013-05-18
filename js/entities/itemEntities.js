@@ -131,6 +131,29 @@ var breakableIceEntity = entity("breakableIceEntity", me.ObjectEntity.extend({
    }
 }));
 
+var ropeEntity = entity("ropeEntity", me.ObjectEntity.extend({
+
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this.parent(x, y, settings);
+        this.type = "Rope";
+        this.collidable = true;
+    },
+
+    // call by the engine when colliding with another object
+    // obj parameter corresponds to the other object (typically the player) touching this one
+    onCollision: function(res, obj) {
+        // do something when collected
+        if(typeof obj == "undefined") {
+            return;
+        }
+
+        if(obj.type == "Sunlight" ){
+            me.game.remove(this);
+        }
+    }
+}));
+
 /*----------------
 a Mushroom entity
 ------------------------ */
@@ -264,3 +287,4 @@ itemEntity.push(mushroomEntity);
 itemEntity.push(healthEntity);
 itemEntity.push(appleEntity);
 itemEntity.push(teleporterEntity);
+itemEntity.push(ropeEntity);

@@ -24,7 +24,7 @@ var stories = {
 			"Help Leafy find some berries..."
 		],
 		next_state : me.state.PLAY,
-		next_level : "level1"
+		next_level : "egypt"
 	},
 	level02 : {
 		lines : [
