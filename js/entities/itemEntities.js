@@ -108,27 +108,6 @@ var appleEntity = entity("appleEntity", me.CollectableEntity.extend({
 
 }));
 
-var successButton = entity("successButton", me.CollectableEntity.extend({
-   // extending the init function is not mandatory
-   // unless you need to add some extra initialization
-   init: function(x, y, settings) {
-       // call the parent constructor
-       this.parent(x, y, settings);
-       this.type = settings.type;
-   },
-
-    // call by the engine when colliding with another object
-    // obj parameter corresponds to the other object (typically the player) touching this one
-    onCollision: function(res, obj) {
-      	// do something when collected
-       	if(obj.name == "mainplayer" ){
-        	obj.ammo += 5;
-       		me.game.remove(this);
-        }
-   }
-
-}));
-
 var breakableIceEntity = entity("breakableIceEntity", me.ObjectEntity.extend({
 	
    init: function(x, y, settings) {
@@ -422,7 +401,6 @@ itemEntity.push(moveEntityYAxis);
 itemEntity.push(mushroomEntity);
 itemEntity.push(healthEntity);
 itemEntity.push(appleEntity);
-itemEntity.push(successButton);
 itemEntity.push(teleporterEntity);
 itemEntity.push(ropeEntity);
 itemEntity.push(MirrorEntity);

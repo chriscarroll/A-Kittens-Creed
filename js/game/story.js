@@ -37,7 +37,14 @@ var stories = {
             ""
         ],
         next_state : me.state.PLAY,
-        next_level : "spacemap"
+        next_level : "spacemap",
+    },
+	successButton : {
+        lines : [
+            ""
+        ],
+        next_state : me.state.PLAY,
+        next_level : "renaisannce",
     }
 
 };
@@ -61,16 +68,33 @@ StoryEntity = me.InvisibleEntity.extend({
     // an object is touched by something (here collected)
     onCollision: function(res, obj) {
         // do something when collected
+<<<<<<< HEAD
         //if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
           if(obj.name == "mainplayer"){  
 			localStorage.currentPlayerHealth = obj.health;
+=======
+<<<<<<< HEAD
+
+		console.log('story hit!');
+		
+        if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
+
+        console.log('story hit!');
+
+        if(obj.name == "mainplayer" ){
+
+=======
+        if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
+>>>>>>> ee4033adb39939ad4e283e6e519514b339d0fcc0
+            localStorage.currentPlayerHealth = obj.health;
+>>>>>>> e907289852a5731098cb6f78b9ad3d4cbe75caf9
             localStorage.currentPlayerAmmo = obj.ammo;
             StoryManager.tellFullscreenStory(this.story);
         }
 
     }
 
-});
+}});
 
 
 var StoryScreen = me.ScreenObject.extend({
