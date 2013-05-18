@@ -122,8 +122,8 @@
  <objectgroup name="Entities" width="50" height="50">
   <object name="mainPlayer" x="1213" y="1465" width="129" height="72">
    <properties>
-    <property name="image" value="gripe_run_right"/>
-    <property name="spritewidth" value="50"/>
+    <property name="image" value="catwalk"/>
+    <property name="spritewidth" value="106"/>
    </properties>
   </object>
   <object name="breakableIceEntity" x="128" y="32" width="32" height="32">
