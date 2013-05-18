@@ -346,26 +346,21 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		
 		//The fps on this machine is 60, so each time counter goes from 60 to 0 is 1 second
 		//each time a second passes, decrement maxTimeSecs value by one
-		if(counter > 59)
-		{
+		if(counter > 59){
 			counter = 0;
 			maxtimeSecs = maxtimeSecs-1;
-			if(maxtimeSecs == 0)
-			{
-				if(maxtimeMins > 0)
-				{
+			if(maxtimeSecs <= 0){
+				if(maxtimeMins > 0){
 					maxtimeSecs=59;
 					maxtimeMins = maxtimeMins-1;
-				}
-				else{
-					alert("Time up!");
+				}else{
+					localStorage.currentLevelId = me.levelDirector.getCurrentLevelId();
 					//hide the HUD after time is up so its not displaying during the storyboard screen
 					me.game.disableHUD(); 
 					
 					me.state.set(me.state.OVER, new game.GameOverScreen());
 					me.state.change(me.state.OVER);
 				}
-				
 			}
 		}
 		
@@ -494,6 +489,10 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		            	me.game.viewport.fadeOut("#000000", 150);
 		            	return false;
 		            }
+		        }
+		        
+		        if(res.obj.type == "enemyBird" || res.obj.type == "enemyWindow"){
+	                    this.flicker(10);
 		        }
 		        
 		        if(res.obj.type == "teleporter"){

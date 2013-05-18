@@ -77,8 +77,17 @@ game.GameOverScreen = me.ScreenObject.extend({
 	        if(this.menu[this.menuLength] == "LoadGame"){
 	      		this.loadSession();
 	           	me.state.change(me.state.PLAY);
-	        }else{	
-	        	StoryManager.tellFullscreenStory("intro");
+	        }else{
+	           	me.state.change(me.state.PLAY);
+		        me.gamestat.reset();
+		        me.levelDirector.reloadLevel();
+		        if(me.game.HUD == null){
+	        		// add a default HUD to the game manager
+			        me.game.addHUD(0, 430, 640, 60);
+			 
+			        // add a new HUD item
+			       	me.game.HUD.addItem("health", new HealthObject(120, 10));
+		        }
 			}
         }else if(me.input.isKeyPressed('up')){
         	this.menuLength = this.menuLength - 1;
@@ -116,7 +125,7 @@ game.GameOverScreen = me.ScreenObject.extend({
     },
     
     loadSession: function(){
-    	if (localStorage.level){
+    	if (localStorage.currentLevelId){
         	level = localStorage.level;
         	level = "level02";
         	
