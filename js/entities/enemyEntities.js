@@ -6,19 +6,30 @@ var enemyWindow = entity("EnemyWindow", me.ObjectEntity.extend({
         // call the parent constructor
         this.parent(x, y, settings);
  		
+ 		this.standardRate = 100;
+ 		this.showRate = settings.showRate;
  		this.gravity = 0;
            // make it collidable
         this.collidable = true;
         // make it a enemy object
-        this.type = me.game.ENEMY_OBJECT;
-    
+        this.type = "enemyWindow";
+    	
+        this.addAnimation("blank", [0]);
+        this.addAnimation("popUp", [0, 1, 2, 3, 4, 5]);
+        this.addAnimation("popDown", [5, 4, 3, 2, 1, 0]);
+        
+		this.setCurrentAnimation("blank");
     },
  
  
     // call by the engine when colliding with another object
     // obj parameter corresponds to the other object (typically the player) touching this one
     onCollision: function(res, obj) {
-        
+        if(this.isCurrentAnimation("popUp") || this.isCurrentAnimation("popDown")){
+        	if(obj.name == "mainplayer" ){
+           		counter = counter - 30;
+            }
+        }
            
     },
  
@@ -31,9 +42,27 @@ var enemyWindow = entity("EnemyWindow", me.ObjectEntity.extend({
         if (this.alive) {
             this.vel.y = 0;
             this.vel.x = 0;
-                 
-        } else {
-            this.vel.x = 0;
+            if(this.isCurrentAnimation("popUp") || this.isCurrentAnimation("popDown")){
+            	if(this.isCurrentAnimation("popDown") && this.getCurrentAnimationFrame() == 5){
+            		this.setAnimationFrame(0);
+					this.setCurrentAnimation("blank");
+            		//end of popUp
+            		this.standardRates = 100;
+            	}else if(this.isCurrentAnimation("popUp") && this.getCurrentAnimationFrame() == 5){
+            		this.setAnimationFrame(0);
+					this.setCurrentAnimation("popDown");
+            	}
+            	
+            }else{
+            	if(this.standardRate == 100){
+	            	this.standardRate = this.standardRate - (this.showRate);
+	            }else if(this.standardRate < 0){
+					this.standardRate = 100;
+					this.setCurrentAnimation("popUp");
+	            }else{
+	            	this.standardRate -= 1;
+	            }
+            }
         }
          
         // check and update movement
@@ -65,7 +94,7 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
         // make it collidable
         this.collidable = true;
         // make it a enemy object
-        this.type = me.game.ENEMY_OBJECT;
+        this.type = "enemyBird";
         this.damage = 5;
  
     },
@@ -81,6 +110,9 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
         
         if(this.onladder){
         	this.vel.y = 0;
+        }
+        if(obj.name == "mainplayer" ){
+           	counter = counter - 30;
         }
         
     },
