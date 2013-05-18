@@ -19,4 +19,4 @@ gameResources.addGraphics("Henryback","data/Henryback.png");
 gameResources.addGraphics("metalbk","data/tilesets/metalbk.png");
 gameResources.addGraphics("hair ladder","data/hair ladder.png");
 gameResources.addGraphics("MOREEJYTILES1","data/MOREEJYTILES1.png");
-
+gameResources.addGraphics("successButton","data/sprite/successButton.png");

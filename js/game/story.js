@@ -37,7 +37,14 @@ var stories = {
             ""
         ],
         next_state : me.state.PLAY,
-        next_level : "spacemap"
+        next_level : "spacemap",
+    },
+	successButton : {
+        lines : [
+            ""
+        ],
+        next_state : me.state.PLAY,
+        next_level : "renaisannce",
     }
 
 };
@@ -60,8 +67,15 @@ StoryEntity = me.InvisibleEntity.extend({
     // this function is called by the engine, when
     // an object is touched by something (here collected)
     onCollision: function(res, obj) {
-        // do something when collected
-        if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
+        //if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
+          if(obj.name == "mainplayer"){  
+			localStorage.currentPlayerHealth = obj.health;
+		
+       // if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
+
+        if(obj.name == "mainplayer" ){
+
+       // if(obj.name == "mainplayer" && ((obj.isKeyGotten && me.levelDirector.getCurrentlevelId() == "egypt") || me.levelDirector.getCurrentlevelId() != "egypt")){
             localStorage.currentPlayerHealth = obj.health;
             localStorage.currentPlayerAmmo = obj.ammo;
             StoryManager.tellFullscreenStory(this.story);
@@ -69,7 +83,7 @@ StoryEntity = me.InvisibleEntity.extend({
 
     }
 
-});
+}});
 
 
 var StoryScreen = me.ScreenObject.extend({
