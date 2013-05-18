@@ -44,7 +44,7 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
                 me.audio.play("jump");
             	// set current vel to the maximum defined value
             	// gravity will then do the rest
-            	playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
+            	playerEntity.vel.y = (-playerEntity.maxVel.y - 4) * me.timer.tick;
             
             	console.log();
             	// set the jumping flag
@@ -58,7 +58,7 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
                 me.audio.play("jump");
             	// set current vel to the maximum defined value
             	// gravity will then do the rest
-            	playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
+            	playerEntity.vel.y = (-playerEntity.maxVel.y - 4) * me.timer.tick;
             
             	console.log();
             	// set the jumping flag
@@ -120,7 +120,7 @@ CreateClimbingPlayerStateClass = function(_playerEntity) {
 		
 		this.moveUp = function()
 		{
-			playerEntity.vel.y = -2;
+			playerEntity.vel.y = -3;
 		}
 		
 		this.jump = function(){
@@ -128,15 +128,13 @@ CreateClimbingPlayerStateClass = function(_playerEntity) {
                 me.audio.play("jump");
             	// set current vel to the maximum defined value
             	// gravity will then do the rest
-            	playerEntity.vel.y = -30;
-            
+            	playerEntity.vel.y = -30;            
         	}
 		}
-
 		
 		this.moveDown = function()
 		{
-			playerEntity.vel.y = 2;
+			playerEntity.vel.y = 3;
 		}
 		
 		this.shootSeed = function(lastFlipX, pos_x, pos_y)  
@@ -168,7 +166,6 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 	
 	togglePlayerState : function(stateWanted){
 		
-		console.log("ToggledState");
 		if(stateWanted == "ladder"){
 			this._private.playerState = CreateClimbingPlayerStateClass(this);
 		}else{
@@ -204,13 +201,7 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 			this.ammo = localPos.ammo;
 			this.vel.x = localPos.velX;
 			this.vel.y = localPos.velY;
-			
-	        if(localPos.flyButtonPressed){
-	    		toggle = true;
-	    		this.togglePlayerState();
-	    		this._private.playerState.setWalkAnimation();
-	    	}
-	    	
+				    	
 	        if (localPos.bulletShot) {
 			    this.ammo = this.ammo + 1;
 	        }
@@ -269,7 +260,9 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         
         //Rebind keys
-        me.input.bindKey(me.input.KEY.UP, "jump", true);
+        me.input.bindKey(me.input.KEY.SPACE, "jump");
+        me.input.bindKey(me.input.KEY.UP, "up");
+        me.input.bindKey(me.input.KEY.DOWN, "down");
     },
  
     update: function() {
@@ -335,12 +328,6 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 				isMoveLeft: isMoveLeft,
 				isMoveRight: isMoveRight
         	});
-        	
-	        if(isFlyButtonToggled){
-	    		toggle = true;
-	    		this.togglePlayerState();
-	    		this._private.playerState.setWalkAnimation();
-	    	}
 	        
 	        if (isMoveLeft) {
 	           	this._private.playerState.moveLeft();

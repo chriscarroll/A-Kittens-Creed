@@ -15,4 +15,4 @@ gameResources.addGraphics("metatiles32x32","data/area01_tileset/metatiles32x32.p
 gameResources.addGraphics("ground_tiles","data/tilesets/ground_tiles.png");
 gameResources.addGraphics("level1ver2", "data/tilesets/level1ver2.png");
 gameResources.addGraphics("vines","data/vines.png");
-gameResources.addGraphics("HenryBack","data/Henryback.png");
+gameResources.addGraphics("Henryback","data/Henryback.png");
