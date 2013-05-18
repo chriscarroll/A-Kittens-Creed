@@ -196,6 +196,33 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
 }}));
 
 /*----------------
+a Key entity
+------------------------ */
+KeyEntity = entity("key", me.ObjectEntity.extend({
+   // extending the init function is not mandatory
+   // unless you need to add some extra initialization
+   init: function(x, y, settings) {
+       // call the parent constructor
+       this.parent(x, y, settings);
+       this.type = "key";
+	   this.collidable = true;
+   },
+   
+   onCollision: function(res, obj) {
+       //do something when collide
+      if(obj.name == "mainplayer" ){		
+		//alert("hit!");
+		if(obj.vel.x > 0){
+			this.pos.x+=3;
+		}
+		else if(obj.vel.x < 0){
+			this.pos.x-=3;
+		}
+    }
+
+}}));
+
+/*----------------
 a Checkpoint entity
 ------------------------ */
 var checkpointEntity = entity("Checkpoint", me.CollectableEntity.extend({
@@ -373,3 +400,4 @@ itemEntity.push(appleEntity);
 itemEntity.push(teleporterEntity);
 itemEntity.push(ropeEntity);
 itemEntity.push(MirrorEntity);
+itemEntity.push(KeyEntity);
