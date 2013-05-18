@@ -347,6 +347,7 @@ var moveEntityXYAxis = entity("MoveEntityXYAxis",  me.ObjectEntity.extend({
     onCollision: function(res, obj) {
         if(res.obj.type == "Mirror"){
             this.vel.x = 0;
+
             this.vel.y = -3;
         }
        // me.game.remove(this);
