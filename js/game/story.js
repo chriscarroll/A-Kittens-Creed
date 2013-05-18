@@ -23,7 +23,7 @@ var stories = {
 			"Lets stall back in time to Egypt"
 		],
 		next_state : me.state.PLAY,
-		next_level : "egypt"
+		next_level : "spacemap"
 	},
 	renaisannce : {
 		lines : [

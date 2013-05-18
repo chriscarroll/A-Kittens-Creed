@@ -17,3 +17,4 @@ gameResources.addGraphics("level1ver2", "data/tilesets/level1ver2.png");
 gameResources.addGraphics("vines","data/vines.png");
 gameResources.addGraphics("Henryback","data/Henryback.png");
 gameResources.addGraphics("MOREEJYTILES1","data/MOREEJYTILES1.png");
+gameResources.addGraphics("metalbk","data/tilesets/metalbk.png");
