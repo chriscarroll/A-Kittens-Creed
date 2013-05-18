@@ -196,6 +196,13 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 	},
 	
     init: function(x, y, settings) {
+	
+		//initialise the timer 
+		maxtimeMins = 1;
+		maxtimeSecs = 59;
+		
+		counter = 0;
+		
         // call the constructor
         this.parent(x, y, settings);
         this.savedPlayerState = [];
@@ -238,6 +245,29 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
     },
  
     update: function() {
+		counter++;
+		
+		//The fps on this machine is 60, so each time counter goes from 60 to 0 is 1 second
+		//each time a second passes, decrement maxTimeSecs value by one
+		if(counter > 59)
+		{
+			counter = 0;
+			maxtimeSecs = maxtimeSecs-1;
+			if(maxtimeSecs == 0)
+			{
+				if(maxtimeMins > 0)
+				{
+					maxtimeSecs=59;
+					maxtimeMins = maxtimeMins-1;
+				}
+				else{
+					alert("Time up!");
+					maxtimeSecs = maxtimeSecs-1;
+				}
+				
+			}
+		}
+		
     	if(!this.alive) {
         	this.savedPlayerState = [];
         	this.updateMovement();
@@ -339,7 +369,8 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 	                        this.health = this.health - res.obj.damage
 	                    }
 	            
-	                    me.game.HUD.setItemValue("health", this.health);
+	                    //me.game.HUD.setItemValue("health", this.health);
+						me.game.HUD.setItemValue("health", Number(maxtimeMins)+":"+Number(maxtimeSecs));
 	                }
 	
 		            if(this.health <= 0) {
@@ -381,7 +412,8 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		}
 		
 	    if(me.game.HUD != null){
-			me.game.HUD.setItemValue("health", this.health);
+			//me.game.HUD.setItemValue("health", this.health);
+			me.game.HUD.setItemValue("health", Number(maxtimeMins) + ":" + Number(maxtimeSecs));
 	    	me.game.HUD.setItemValue("ammo", this.ammo);
 	    }
 	    
