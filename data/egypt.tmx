@@ -32,7 +32,7 @@
  <objectgroup name="entity" width="21" height="15">
   <object name="storyEntity" x="589" y="387" width="78" height="56">
    <properties>
-    <property name="s" value="level02"/>
+    <property name="s" value="renaisannce"/>
    </properties>
   </object>
   <object name="mainPlayer" x="42" y="351" width="125" height="86">

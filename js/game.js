@@ -84,10 +84,12 @@ var game = {
 	controls: function controls(){
 		me.input.bindKey(me.input.KEY.LEFT,  "left");
 		me.input.bindKey(me.input.KEY.RIGHT, "right");
-		me.input.bindKey(me.input.KEY.UP,     "jump", true);
+        me.input.bindKey(me.input.KEY.SPACE, "jump");
+        me.input.bindKey(me.input.KEY.UP, "up");
+		me.input.bindKey(me.input.KEY.DOWN,     "down");
 		me.input.bindKey(me.input.KEY.S, 	 "save", true);
 		me.input.bindKey(me.input.KEY.F, 	 "toggle_fly", true);
-		me.input.bindKey(me.input.KEY.SPACE, 	"shoot", true);
+		me.input.bindKey(me.input.KEY.Q, 	"shoot", true);
 		me.input.bindKey(me.input.KEY.ESC, 	"menu", true);
 		me.input.bindKey(me.input.KEY.R, 	 "rewind");
 	}

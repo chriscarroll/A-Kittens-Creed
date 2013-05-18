@@ -25,12 +25,12 @@ var stories = {
 		next_state : me.state.PLAY,
 		next_level : "egypt"
 	},
-	level02 : {
+	renaisannce : {
 		lines : [
 			"Oh Shit, England"
 		],
 		next_state : me.state.PLAY,
-		next_level : "level02"
+		next_level : "renaisannce"
 	},
 	level03 : {
 		lines : [
