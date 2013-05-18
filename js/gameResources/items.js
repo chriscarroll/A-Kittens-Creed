@@ -32,3 +32,4 @@ gameResources.addItem("healthIcon","data/sprite/health.png");
 gameResources.addItem("pelletBullet","data/sprite/mushroom.png");
 gameResources.addItem("apple","data/sprite/apple.png");
 gameResources.addItem("teleporter","data/sprite/teleporter.png");
+gameResources.addItem("successButton","data/sprite/successButton.png");
