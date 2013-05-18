@@ -8,4 +8,4 @@ gameResources.addPlayerGraphics = function addPlayerGraphics(name, source){
 		src: source
 	});
 }
-gameResources.addPlayerGraphics("catwalk","data/kev/main_character/catwalk.png");
+gameResources.addPlayerGraphics("catwalk","data/catmovement/catwalk.png");
