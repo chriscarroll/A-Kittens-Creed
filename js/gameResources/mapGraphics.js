@@ -16,5 +16,7 @@ gameResources.addGraphics("ground_tiles","data/tilesets/ground_tiles.png");
 gameResources.addGraphics("level1ver2", "data/tilesets/level1ver2.png");
 gameResources.addGraphics("vines","data/vines.png");
 gameResources.addGraphics("Henryback","data/Henryback.png");
+gameResources.addGraphics("metalbk","data/tilesets/metalbk.png");
 gameResources.addGraphics("hair ladder","data/hair ladder.png");
 gameResources.addGraphics("MOREEJYTILES1","data/MOREEJYTILES1.png");
+

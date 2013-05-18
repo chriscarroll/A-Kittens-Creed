@@ -169,6 +169,27 @@ var PlayerDeath = entity("PlayerDeath", me.InvisibleEntity.extend({
 }));
 
 /*----------------
+a Mirror entity
+------------------------ */
+MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
+   // extending the init function is not mandatory
+   // unless you need to add some extra initialization
+   init: function(x, y, settings) {
+       // call the parent constructor
+       this.parent(x, y, settings);
+       this.type = "mirror2";
+	   this.collidable = true;
+   },
+   
+   onCollision: function(res, obj) {
+       //do something when collide
+      if(obj.name == "mainplayer" ){		
+		alert("hit!");
+    }
+
+}}));
+
+/*----------------
 a Checkpoint entity
 ------------------------ */
 var checkpointEntity = entity("Checkpoint", me.CollectableEntity.extend({
@@ -345,3 +366,4 @@ itemEntity.push(healthEntity);
 itemEntity.push(appleEntity);
 itemEntity.push(teleporterEntity);
 itemEntity.push(ropeEntity);
+itemEntity.push(MirrorEntity);

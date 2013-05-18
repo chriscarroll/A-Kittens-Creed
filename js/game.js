@@ -59,6 +59,8 @@ var game = {
 		
 	   	    
 	    me.entityPool.add("StoryEntity", StoryEntity);
+		
+		this.addEntity(MirrorEntity);	
 	   
 		// Add Item Entities to the entity pool
 		this.addEntity(itemEntity);

@@ -9,3 +9,4 @@ gameResources.addPlayerGraphics = function addPlayerGraphics(name, source){
 	});
 }
 gameResources.addPlayerGraphics("catwalk","data/kev/main_character/catwalk.png");
+gameResources.addPlayerGraphics("SpaceDog","data/kev/main_character/catwalk.png");
