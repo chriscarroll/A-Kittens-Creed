@@ -80,7 +80,7 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
         }
         return false;
     }
-});
+}));
 
 var wheelie = entity("EnemyEntity", me.ObjectEntity.extend({
     init: function(x, y, settings) {
