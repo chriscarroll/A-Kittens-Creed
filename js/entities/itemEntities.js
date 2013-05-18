@@ -185,7 +185,12 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
        //do something when collide
       if(obj.name == "mainplayer" ){		
 		//alert("hit!");
-		this.pos.x++;
+		if(obj.vel.x > 0){
+			this.pos.x+=3;
+		}
+		else if(obj.vel.x < 0){
+			this.pos.x-=3;
+		}
     }
 
 }}));
