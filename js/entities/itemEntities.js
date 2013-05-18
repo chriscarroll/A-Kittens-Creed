@@ -184,7 +184,8 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
    onCollision: function(res, obj) {
        //do something when collide
       if(obj.name == "mainplayer" ){		
-		alert("hit!");
+		//alert("hit!");
+		this.pos.x++;
     }
 
 }}));
