@@ -39,90 +39,110 @@
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="30"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="891" y="1261" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="30"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="846" y="187" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="70"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="846" y="99" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="70"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="390" y="187" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="50"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="405" y="102" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="50"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="98" y="321" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="70"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="297" y="408" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="70"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="591" y="324" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="70"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="402" y="919" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="90"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="405" y="823" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="90"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="400" y="731" width="267" height="48">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="90"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="359" y="1125" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="90"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="SpaceDog" x="725" y="1055" width="363" height="50">
    <properties>
     <property name="image" value="SpaceDog"/>
     <property name="speed" value="90"/>
+    <property name="spritewidth" value="101"/>
    </properties>
   </object>
   <object name="mainPlayer" x="42" y="1315" width="129" height="72">
    <properties>
     <property name="image" value="catwalk"/>
     <property name="spritewidth" value="101"/>
+   </properties>
+  </object>
+  <object name="successButton" x="805" y="873" width="131" height="78">
+   <properties>
+    <property name="image" value="successButton"/>
+    <property name="spritewidth" value="92"/>
    </properties>
   </object>
  </objectgroup>

@@ -159,6 +159,72 @@ CreateClimbingPlayerStateClass = function(_playerEntity) {
 	return new ClimbingPlayerStateClass(_playerEntity);
 }
 
+CreateSpaceManPlayerStateClass = function(_playerEntity) {
+
+	function SpaceManPlayerStateClass(playerEntity) {
+		
+		playerEntity.gravity=0;
+	    
+        // adjust the bounding box
+    	playerEntity.updateColRect(1, 48, -1, 0);
+		   
+		this.setWalkAnimation = function(){
+			playerEntity.setCurrentAnimation("climb");
+		}
+		
+		this.moveLeft = function()
+		{
+			playerEntity.flipX(true);
+        	// update the entity velocity
+        	playerEntity.vel.x = -2;
+		}
+		
+		this.moveRight = function()
+		{
+			// unflip the sprite
+        	playerEntity.flipX(false);
+        	// update the entity velocity
+        	playerEntity.vel.x = 2;
+		}
+		
+		this.moveUp = function()
+		{
+			playerEntity.vel.y = -3;
+		}
+		
+		this.jump = function(){
+			if (playerEntity.vel.y  < 6 && playerEntity.vel.y > 0) {
+                me.audio.play("jump");
+            	// set current vel to the maximum defined value
+            	// gravity will then do the rest
+            	playerEntity.vel.y = -30;            
+        	}
+		}
+		
+		this.moveDown = function()
+		{
+			playerEntity.vel.y = 3;
+		}
+		
+		this.slowDown = function(){
+			playerEntity.vel.y = 0;
+		}
+		
+		this.shootSeed = function(lastFlipX, pos_x, pos_y)  
+		{
+			var shot = new bulletEntity.data(lastFlipX, pos_x+5, pos_y+40, { image: 'birdSeed', spritewidth: 7 });
+            me.game.add(shot, 10);
+            me.game.sort();
+		}
+		
+		this.getType = function()
+		{
+			return "space";
+		}
+	}
+	return new SpaceManPlayerStateClass(_playerEntity);
+}
+
 playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
  
     /* -----
@@ -175,7 +241,10 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		
 		if(stateWanted == "ladder"){
 			this._private.playerState = CreateClimbingPlayerStateClass(this);
-		}else{
+		}else if(stateWanted == "space") {
+			this._private.playerState = CreateSpaceManPlayerStateClass(this);
+		}
+		else{
 			this._private.playerState = CreateDefaultPlayerStateObject(this);
 		}
 	},
@@ -302,6 +371,10 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
         	this.updateMovement();
     	}
     	
+		if(me.levelDirector.getCurrentLevelId() === "spacemap") {
+			this.togglePlayerState("space");
+		}
+		
     	//Fixing being able to fly over the lawnmower
     	if(me.levelDirector.getCurrentLevelId() === "level02" && lawnMowerCurrentXPosition != 0){
     		if(lawnMowerCurrentXPosition > this.pos.x){
