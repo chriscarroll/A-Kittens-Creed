@@ -39,14 +39,12 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
         	playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
 		}
 		
-		this.moveUp = function()
-		{
-			if (!playerEntity.jumping && !playerEntity.falling) 
-        	{
+		this.moveUp = function(){
+			if (!playerEntity.jumping && !playerEntity.falling) {
                 me.audio.play("jump");
             	// set current vel to the maximum defined value
             	// gravity will then do the rest
-            	playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
+            	playerEntity.vel.y = (-playerEntity.maxVel.y) * (me.timer.tick * 3);
             
             	console.log();
             	// set the jumping flag
@@ -54,7 +52,28 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
             
         	}
 		}
-				
+		
+		this.jump = function(){
+			if (!playerEntity.jumping && !playerEntity.falling) {
+                me.audio.play("jump");
+            	// set current vel to the maximum defined value
+            	// gravity will then do the rest
+            	playerEntity.vel.y = (-playerEntity.maxVel.y) * (me.timer.tick * 3);
+            
+            	console.log();
+            	// set the jumping flag
+            	playerEntity.jumping = true;
+            
+        	}
+		}
+		
+		this.moveDown = function(){
+			
+		}
+		
+		this.slowDown = function(){
+		}
+			
 		this.shootSeed = function(lastFlipX, pos_x, pos_y) 
 		{
 			var shot = new bulletEntity.data(lastFlipX, pos_x+5, pos_y+65, { image: 'birdSeed', spritewidth: 7 });
@@ -74,11 +93,11 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
 
 }
 
-CreateFlyingPlayerStateObject = function(_playerEntity) {
+CreateClimbingPlayerStateClass = function(_playerEntity) {
 
-	function FlyingPlayerStateClass(playerEntity) {
+	function ClimbingPlayerStateClass(playerEntity) {
 		
-		playerEntity.gravity=0.1;
+		playerEntity.gravity=0;
 	    
         // adjust the bounding box
     	playerEntity.updateColRect(1, 48, -1, 0);
@@ -91,7 +110,7 @@ CreateFlyingPlayerStateObject = function(_playerEntity) {
 		{
 			playerEntity.flipX(true);
         	// update the entity velocity
-        	playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
+        	playerEntity.vel.x = -2;
 		}
 		
 		this.moveRight = function()
@@ -99,12 +118,30 @@ CreateFlyingPlayerStateObject = function(_playerEntity) {
 			// unflip the sprite
         	playerEntity.flipX(false);
         	// update the entity velocity
-        	playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
+        	playerEntity.vel.x = 2;
 		}
 		
 		this.moveUp = function()
 		{
-			playerEntity.vel.y -= (playerEntity.accel.y * me.timer.tick) /3;
+			playerEntity.vel.y = -3;
+		}
+		
+		this.jump = function(){
+			if (playerEntity.vel.y  < 6 && playerEntity.vel.y > 0) {
+                me.audio.play("jump");
+            	// set current vel to the maximum defined value
+            	// gravity will then do the rest
+            	playerEntity.vel.y = -30;            
+        	}
+		}
+		
+		this.moveDown = function()
+		{
+			playerEntity.vel.y = 3;
+		}
+		
+		this.slowDown = function(){
+			playerEntity.vel.y = 0;
 		}
 		
 		this.shootSeed = function(lastFlipX, pos_x, pos_y)  
@@ -116,10 +153,10 @@ CreateFlyingPlayerStateObject = function(_playerEntity) {
 		
 		this.getType = function()
 		{
-			return "flying";
+			return "climbing";
 		}
 	}
-	return new FlyingPlayerStateClass(_playerEntity);
+	return new ClimbingPlayerStateClass(_playerEntity);
 }
 
 playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
@@ -134,18 +171,13 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		playerState : {},	
 	},
 	
-	togglePlayerState : function(){
+	togglePlayerState : function(stateWanted){
 		
-		console.log("ToggledState");
-		if(this._private.playerState.getType() == "default"){
-			this._private.playerState = CreateFlyingPlayerStateObject(this);
-			
-		}
-		else if(this._private.playerState.getType() == "flying"){
-			
+		if(stateWanted == "ladder"){
+			this._private.playerState = CreateClimbingPlayerStateClass(this);
+		}else{
 			this._private.playerState = CreateDefaultPlayerStateObject(this);
 		}
-	
 	},
 	
 	savePlayerDataOnEachTick: function(dataToSave){
@@ -176,13 +208,7 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 			this.ammo = localPos.ammo;
 			this.vel.x = localPos.velX;
 			this.vel.y = localPos.velY;
-			
-	        if(localPos.flyButtonPressed){
-	    		toggle = true;
-	    		this.togglePlayerState();
-	    		this._private.playerState.setWalkAnimation();
-	    	}
-	    	
+				    	
 	        if (localPos.bulletShot) {
 			    this.ammo = this.ammo + 1;
 	        }
@@ -241,7 +267,9 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         
         //Rebind keys
-        me.input.bindKey(me.input.KEY.UP, "jump", true);
+        me.input.bindKey(me.input.KEY.SPACE, "jump");
+        me.input.bindKey(me.input.KEY.UP, "up");
+        me.input.bindKey(me.input.KEY.DOWN, "down");
     },
  
     update: function() {
@@ -295,6 +323,9 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
         	var isBulletShot = me.input.isKeyPressed('shoot') && this.ammo > 0;
         	var isMoveLeft = me.input.isKeyPressed('left');
         	var isMoveRight = me.input.isKeyPressed('right');
+        	var isJump = me.input.isKeyPressed('jump');
+        	var isMoveUp = me.input.isKeyPressed('up');
+        	var isMoveDown = me.input.isKeyPressed('down');
         	this.savePlayerDataOnEachTick({
         		x: this.pos.x,
         		y: this.pos.y,
@@ -307,26 +338,25 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 				isMoveLeft: isMoveLeft,
 				isMoveRight: isMoveRight
         	});
-        	
-	        if(isFlyButtonToggled){
-	    		toggle = true;
-	    		this.togglePlayerState();
-	    		this._private.playerState.setWalkAnimation();
-	    	}
 	        
 	        if (isMoveLeft) {
 	           	this._private.playerState.moveLeft();
 	        }else if (isMoveRight) {
 	            this._private.playerState.moveRight();
-	        }else {
-	            this.vel.x = 0;
+	        }else{
+	        	this.vel.x = 0;
 	        }
 	        
-	        if (me.input.isKeyPressed('jump')) {
-	        	me.audio.play("Flap_Loop");
-	        	this._private.playerState.moveUp();
+	        if(isMoveUp){
+	            this._private.playerState.moveUp();
+	        }else if(isJump){
+	            this._private.playerState.jump();
+	        }else if(isMoveDown){
+	            this._private.playerState.moveDown();
+	        }else{
+	        	this._private.playerState.slowDown();
 	        }
-	
+		
 	        //shoot regardless of movement
 	        if (isBulletShot) {
 	            me.audio.play("shoot");
@@ -352,6 +382,14 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 	     
 	        // check for collision
 	        var res = me.game.collide(this);
+		  	
+	        if(this.onladder){
+	    		this.togglePlayerState("ladder");
+	    		this._private.playerState.setWalkAnimation();
+	    	}else{
+	    		this.togglePlayerState("default");
+	    		this._private.playerState.setWalkAnimation();
+	    	}
 	         
 	        if (res) {
 	            if (res.obj.type == me.game.ENEMY_OBJECT || res.obj.type == "MovingBlockBullet" || res.obj.type == "lawnmower") {
