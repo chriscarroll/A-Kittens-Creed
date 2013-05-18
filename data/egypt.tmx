@@ -35,7 +35,7 @@
  <objectgroup name="entity" width="31" height="22">
   <object name="storyEntity" x="881" y="613" width="78" height="56">
    <properties>
-    <property name="s" value="level02"/>
+    <property name="s" value="renaisannce"/>
    </properties>
   </object>
   <object name="mainPlayer" x="88" y="412" width="125" height="86">

@@ -281,10 +281,12 @@ var moveEntityXYAxis = entity("MoveEntityXYAxis",  me.ObjectEntity.extend({
         this.type="Sunlight";
         this.gravity = 0;
         this.startX = x;
+        this.startY = y;
         this.endX = x + settings.width;
         this.endY = y + settings.height;
         this.moveUp = false;
-        this.yVelocity = 1;
+        this.vel.x = 3;
+        this.vel.y = 3;
         // make it collidable
         this.collidable = true;
     },
@@ -294,23 +296,25 @@ var moveEntityXYAxis = entity("MoveEntityXYAxis",  me.ObjectEntity.extend({
             return false;
         }
 
-        //console.log("x: " + this.pos.x + " y: " + this.pos.y);
+        console.log("x: " + this.pos.x + " y: " + this.pos.y + " startY: " + this.startY + " yvel " + this.vel.x + " xvel " +this.vel.y);
         //RHS of screen
         if(this.endX - 70 <= this.pos.x){
             this.pos.x = this.startX;
+            this.pos.y = this.startY;
+            this.vel.x = 3;
+            this.vel.y = 3;
         }
-       if(this.pos.y >= 430){
-           console.log(this.yVelocity)
-           this.vel.y = -1;
-           this.yVelocity = -1;
+        //bottom of level
+       if(this.pos.y > 659){
+           this.vel.y = -3;
+       }
+
+       if(this.pos.y < this.startY){
+           this.pos.y = this.startY;
+           this.vel.y = 3;
        }
 
 
-        else if(this.startX >= this.pos.x){
-            this.vel.x = this.vel.x + 1;
-            console.log(this.yVelocity)
-            this.vel.y = this.vel.y + this.yVelocity;
-        }
         this.updateMovement();
         return true;
     },

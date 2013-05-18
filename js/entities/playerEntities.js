@@ -15,7 +15,7 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
     	playerEntity.updateColRect(1, 48, -1, 0);
 	
 		this.setWalkAnimation = function() {
-		 	playerEntity.setCurrentAnimation("walk");
+			playerEntity.setCurrentAnimation("climb");
 		}
 		
 		this.moveLeft = function()
@@ -103,7 +103,7 @@ CreateClimbingPlayerStateClass = function(_playerEntity) {
     	playerEntity.updateColRect(1, 48, -1, 0);
 		   
 		this.setWalkAnimation = function(){
-			playerEntity.setCurrentAnimation("ghost_walk");
+			playerEntity.setCurrentAnimation("climb");
 		}
 		
 		this.moveLeft = function()
@@ -255,9 +255,9 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
         // set the default horizontal & vertical speed (accel vector)
         this.setVelocity(3, 15);
         
-        this.spritewidth = 50;
+        //this.spritewidth = 50;
         this.addAnimation("walk", [0, 1, 2, 3, 4, 5, 6, 7, 8]);
-        this.addAnimation("ghost_walk", [2, 3, 4, 5, 6]);
+        this.addAnimation("climb", [2, 3, 4, 5, 6]);
   
 		this._private.playerState = CreateDefaultPlayerStateObject(this);
 
