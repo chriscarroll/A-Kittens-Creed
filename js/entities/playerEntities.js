@@ -262,7 +262,8 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 				}
 				else{
 					alert("Time up!");
-					maxtimeSecs = maxtimeSecs-1;
+					//hide the HUD after time is up so its not displaying during the storyboard screen
+					me.game.disableHUD(); 
 				}
 				
 			}
