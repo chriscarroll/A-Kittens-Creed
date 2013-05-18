@@ -237,7 +237,7 @@ KeyEntity = entity("key", me.ObjectEntity.extend({
        //do something when collide
       if(obj.name == "sunlight"){		
 		//alert("hit!");
-		this.pos.y-=10;
+		this.falling = true;
 		}
 		else if(obj.name == "mainPlayer")
 		{
