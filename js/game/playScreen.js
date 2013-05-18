@@ -14,7 +14,6 @@ var PlayScreen = me.ScreenObject.extend({
 	        me.game.addHUD(0, 430, 640, 60);
 	 
 	        // add a new HUD item
-	        me.game.HUD.addItem("ammo", new AmmoObject(620, 10));
 	       	me.game.HUD.addItem("health", new HealthObject(120, 10));
         }
  

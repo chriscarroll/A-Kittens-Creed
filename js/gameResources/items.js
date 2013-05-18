@@ -35,3 +35,4 @@ gameResources.addItem("teleporter","data/sprite/teleporter.png");
 
 //Adding mirrors
 gameResources.addItem("mirror2","data/sprite/mirror2.png");
+gameResources.addItem("key","data/sprite/key.png");
