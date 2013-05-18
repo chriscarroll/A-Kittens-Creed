@@ -281,8 +281,7 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		{
 			counter = 0;
 			maxtimeSecs = maxtimeSecs-1;
-			if(maxtimeSecs == 0)
-			{
+			if(maxtimeSecs == 0){
 				if(maxtimeMins > 0)
 				{
 					maxtimeSecs=59;

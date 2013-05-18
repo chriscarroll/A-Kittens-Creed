@@ -64,60 +64,46 @@
     <property name="spritewidth" value="50"/>
    </properties>
   </object>
-  <object name="EnemyWindow" x="264" y="1561" width="77" height="57">
+  <object name="EnemyWindow" x="264" y="1561" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
     <property name="showRate" value="30"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="131"/>
    </properties>
   </object>
-  <object name="EnemyWindow" x="205" y="1217" width="77" height="57">
+  <object name="EnemyWindow" x="205" y="1217" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
     <property name="showRate" value="60"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="131"/>
    </properties>
   </object>
-  <object name="EnemyWindow" x="202" y="830" width="77" height="57">
+  <object name="EnemyWindow" x="202" y="830" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
     <property name="showRate" value="75"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="131"/>
    </properties>
   </object>
-  <object name="EnemyWindow" x="206" y="914" width="77" height="57">
+  <object name="EnemyWindow" x="206" y="914" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
     <property name="showRate" value="75"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="131"/>
    </properties>
   </object>
-  <object name="EnemyWindow" x="383" y="909" width="77" height="57">
+  <object name="EnemyWindow" x="383" y="909" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
     <property name="showRate" value="80"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="131"/>
    </properties>
   </object>
-  <object name="EnemyWindow" x="293" y="914" width="77" height="57">
-   <properties>
-    <property name="image" value="EnemyWindow"/>
-    <property name="showRate" value="80"/>
-    <property name="spritewidth" value="100"/>
-   </properties>
-  </object>
-  <object name="EnemyWindow" x="291" y="830" width="77" height="57">
-   <properties>
-    <property name="image" value="EnemyWindow"/>
-    <property name="showRate" value="75"/>
-    <property name="spritewidth" value="100"/>
-   </properties>
-  </object>
-  <object name="EnemyWindow" x="382" y="830" width="77" height="57">
+  <object name="EnemyWindow" x="382" y="830" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
     <property name="showRate" value="90"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="131"/>
    </properties>
   </object>
   <object name="EnemyBird" x="36" y="585" width="568" height="42">
@@ -158,6 +144,7 @@
   <object name="EnemyWindow" x="301" y="2300" width="32" height="32">
    <properties>
     <property name="image" value="EnemyWindow"/>
+    <property name="showRate" value="100"/>
     <property name="spritewidth" value="131"/>
    </properties>
   </object>
