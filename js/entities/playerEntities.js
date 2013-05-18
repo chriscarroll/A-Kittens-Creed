@@ -223,7 +223,7 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
         this.setVelocity(3, 15);
         
         this.spritewidth = 50;
-        this.addAnimation("walk", [0, 1]);
+        this.addAnimation("walk", [0, 1, 2, 3, 4, 5, 6, 7, 8]);
         this.addAnimation("ghost_walk", [2, 3, 4, 5, 6]);
   
 		this._private.playerState = CreateDefaultPlayerStateObject(this);
