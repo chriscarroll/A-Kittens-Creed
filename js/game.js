@@ -63,7 +63,6 @@ var game = {
 		// Add Enemy Entities to the entity pool
 		this.addEntity(enemyEntity);
 		
-		this.addEntity(lawnmowerEntity);
 		// Add Checkpoint Entity to the entity pool
 		//this.addEntity(checkpointEntity);
 

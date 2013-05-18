@@ -53,7 +53,7 @@
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="85"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="50"/>
    </properties>
   </object>
   <object name="EnemyWindow" x="264" y="1561" width="77" height="57">
@@ -116,35 +116,35 @@
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="90"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="50"/>
    </properties>
   </object>
   <object name="EnemyBird" x="36" y="1046" width="568" height="42">
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="75"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="50"/>
    </properties>
   </object>
   <object name="EnemyBird" x="35" y="1725" width="568" height="42">
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="60"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="50"/>
    </properties>
   </object>
   <object name="EnemyBird" x="37" y="510" width="568" height="42">
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="90"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="50"/>
    </properties>
   </object>
   <object name="EnemyBird" x="35" y="2149" width="568" height="42">
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="60"/>
-    <property name="spritewidth" value="100"/>
+    <property name="spritewidth" value="50"/>
    </properties>
   </object>
  </objectgroup>
