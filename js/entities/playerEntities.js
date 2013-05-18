@@ -44,7 +44,7 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
                 me.audio.play("jump");
             	// set current vel to the maximum defined value
             	// gravity will then do the rest
-            	playerEntity.vel.y = (-playerEntity.maxVel.y - 4) * me.timer.tick;
+            	playerEntity.vel.y = (-playerEntity.maxVel.y) * (me.timer.tick * 3);
             
             	console.log();
             	// set the jumping flag
@@ -58,7 +58,7 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
                 me.audio.play("jump");
             	// set current vel to the maximum defined value
             	// gravity will then do the rest
-            	playerEntity.vel.y = (-playerEntity.maxVel.y - 4) * me.timer.tick;
+            	playerEntity.vel.y = (-playerEntity.maxVel.y) * (me.timer.tick * 3);
             
             	console.log();
             	// set the jumping flag
@@ -70,7 +70,10 @@ CreateDefaultPlayerStateObject = function(_playerEntity) {
 		this.moveDown = function(){
 			
 		}
-				
+		
+		this.slowDown = function(){
+		}
+			
 		this.shootSeed = function(lastFlipX, pos_x, pos_y) 
 		{
 			var shot = new bulletEntity.data(lastFlipX, pos_x+5, pos_y+65, { image: 'birdSeed', spritewidth: 7 });
@@ -135,6 +138,10 @@ CreateClimbingPlayerStateClass = function(_playerEntity) {
 		this.moveDown = function()
 		{
 			playerEntity.vel.y = 3;
+		}
+		
+		this.slowDown = function(){
+			playerEntity.vel.y = 0;
 		}
 		
 		this.shootSeed = function(lastFlipX, pos_x, pos_y)  
@@ -344,7 +351,7 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 	        }else if(isMoveDown){
 	            this._private.playerState.moveDown();
 	        }else{
-	            this.vel.y = 0;
+	        	this._private.playerState.slowDown();
 	        }
 		
 	        //shoot regardless of movement
