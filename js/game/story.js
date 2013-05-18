@@ -20,16 +20,14 @@ var StoryManager = {
 var stories = {
 	intro : {
 		lines : [
-			"On cold winter's night Blue Jay or \"Leafy\" as his friends call him was collecting some berries for his wife while she cares for her eggs.",
-			"Help Leafy find some berries..."
+			"Lets stall back in time to Egypt"
 		],
 		next_state : me.state.PLAY,
 		next_level : "egypt"
 	},
 	level02 : {
 		lines : [
-			"The has mafia kicked you on to the ground!",
-			"Oh no!!! A Lawn Mower!!"
+			"Oh Shit, England"
 		],
 		next_state : me.state.PLAY,
 		next_level : "level02"
