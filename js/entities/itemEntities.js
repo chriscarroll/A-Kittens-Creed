@@ -239,6 +239,57 @@ var moveEntityXAxis = entity("MoveEntityXAxis",  me.ObjectEntity.extend({
    }
 }));
 
+var moveEntityXYAxis = entity("MoveEntityXYAxis",  me.ObjectEntity.extend({
+    // extending the init function is not mandatory
+    // unless you need to add some extra initialization
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this.parent(x, y, settings);
+        this.type="Sunlight";
+        this.gravity = 0;
+        this.startX = x;
+        this.endX = x + settings.width;
+        this.endY = y + settings.height;
+        this.moveUp = false;
+        this.yVelocity = 1;
+        // make it collidable
+        this.collidable = true;
+    },
+
+    update: function(){
+        if (!this.visible){
+            return false;
+        }
+
+        //console.log("x: " + this.pos.x + " y: " + this.pos.y);
+        //RHS of screen
+        if(this.endX - 70 <= this.pos.x){
+            this.pos.x = this.startX;
+        }
+       if(this.pos.y >= 430){
+           console.log(this.yVelocity)
+           this.vel.y = -1;
+           this.yVelocity = -1;
+       }
+
+
+        else if(this.startX >= this.pos.x){
+            this.vel.x = this.vel.x + 1;
+            console.log(this.yVelocity)
+            this.vel.y = this.vel.y + this.yVelocity;
+        }
+        this.updateMovement();
+        return true;
+    },
+
+    onCollision: function(res, obj) {
+        if(res.obj.type == "Rope"){
+            me.game.remove(this);
+        }
+        me.game.remove(this);
+    }
+}));
+
 
 var moveEntityYAxis = entity("MoveEntityYAxis",  me.ObjectEntity.extend({
 	   // extending the init function is not mandatory
@@ -282,6 +333,7 @@ itemEntity.push(coinEntity);
 itemEntity.push(checkpointEntity);
 itemEntity.push(PlayerDeath);
 itemEntity.push(moveEntityXAxis);
+itemEntity.push(moveEntityXYAxis);
 itemEntity.push(moveEntityYAxis);
 itemEntity.push(mushroomEntity);
 itemEntity.push(healthEntity);

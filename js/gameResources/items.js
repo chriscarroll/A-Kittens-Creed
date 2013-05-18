@@ -26,6 +26,7 @@ gameResources.addItem("wife_left_50px","data/kev/main_character/wife_left_50px.p
 gameResources.addItem("spinning_coin_gold","data/sprite/spinning_coin_gold.png");
 gameResources.addItem("block","data/sprite/block.png");
 gameResources.addItem("birdSeed","data/kev/bird_seed/seed2.png");
+gameResources.addItem("sunlight","data/kev/bird_seed/seed2.png");
 gameResources.addItem("mushroom","data/sprite/mushroom.png");
 gameResources.addItem("healthIcon","data/sprite/health.png");
 gameResources.addItem("pelletBullet","data/sprite/mushroom.png");
