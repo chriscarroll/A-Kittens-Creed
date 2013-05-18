@@ -32,11 +32,8 @@ gameResources.addItem("healthIcon","data/sprite/health.png");
 gameResources.addItem("pelletBullet","data/sprite/mushroom.png");
 gameResources.addItem("apple","data/sprite/apple.png");
 gameResources.addItem("teleporter","data/sprite/teleporter.png");
-<<<<<<< HEAD
 gameResources.addItem("successButton","data/sprite/successButton.png");
-=======
 
 //Adding mirrors
 gameResources.addItem("mirror2","data/sprite/mirror2.png");
 gameResources.addItem("key","data/sprite/key.png");
->>>>>>> d09ab5f877150920b80286097e791ddebef8213f
