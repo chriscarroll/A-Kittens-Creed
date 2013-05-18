@@ -3,10 +3,6 @@ an enemy Entity
 ------------------------ */
 var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
     init: function(x, y, settings) {
-        // define this here instead of tiled
-        settings.image = "wheelie_right";
-        settings.spritewidth = 64;
- 
         // call the parent constructor
         this.parent(x, y, settings);
  
