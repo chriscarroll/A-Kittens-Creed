@@ -32,13 +32,12 @@ var stories = {
 		next_state : me.state.PLAY,
 		next_level : "renaisannce"
 	},
-	level03 : {
+	space : {
 		lines : [
-			"Wow that was a lucky escape!",
-			"You must climb the inside of the trunk!!"
+			"Space Map"
 		],
 		next_state : me.state.PLAY,
-		next_level : "level4"
+		next_level : "spacemap"
 	}
 
 };

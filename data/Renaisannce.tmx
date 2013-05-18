@@ -42,6 +42,11 @@
     <property name="spritewidth" value="101"/>
    </properties>
   </object>
+  <object name="storyEntity" x="286" y="332" width="95" height="113">
+   <properties>
+    <property name="s" value="space"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Collision Layer" width="20" height="80" visible="0">
   <data encoding="base64">
@@ -140,7 +145,7 @@
     <property name="spritewidth" value="50"/>
    </properties>
   </object>
-  <object name="EnemyBird" x="35" y="2149" width="568" height="42">
+  <object name="EnemyBird" x="72" y="2168" width="488" height="50">
    <properties>
     <property name="image" value="EnemyBird"/>
     <property name="speed" value="60"/>
