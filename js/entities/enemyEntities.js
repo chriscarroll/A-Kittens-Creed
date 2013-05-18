@@ -1,15 +1,56 @@
 /* --------------------------
 an enemy Entity
 ------------------------ */
-var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
+var enemyWindow = entity("EnemyWindow", me.ObjectEntity.extend({
     init: function(x, y, settings) {
-        // define this here instead of tiled
-        settings.image = "wheelie_right";
-        settings.spritewidth = 64;
- 
         // call the parent constructor
         this.parent(x, y, settings);
+ 		
+ 		this.gravity = 0;
+           // make it collidable
+        this.collidable = true;
+        // make it a enemy object
+        this.type = me.game.ENEMY_OBJECT;
+    
+    },
  
+ 
+    // call by the engine when colliding with another object
+    // obj parameter corresponds to the other object (typically the player) touching this one
+    onCollision: function(res, obj) {
+        
+           
+    },
+ 
+    // manage the enemy movement
+    update: function() {
+        // do nothing if not visible
+        if (!this.visible)
+            return false;
+ 
+        if (this.alive) {
+            this.vel.y = 0;
+            this.vel.x = 0;
+                 
+        } else {
+            this.vel.x = 0;
+        }
+         
+        // check and update movement
+        this.updateMovement();
+        
+        // update objet animation
+        this.parent(this);
+        return true;
+    }
+}));
+
+var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this.parent(x, y, settings);
+ 		
+ 		this.gravity = 0;
         this.startX = x;
         this.endX = x + settings.width - settings.spritewidth;
         // size of sprite
@@ -33,18 +74,13 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
     // call by the engine when colliding with another object
     // obj parameter corresponds to the other object (typically the player) touching this one
     onCollision: function(res, obj) {
- 
-        if(obj.name == "mainplayer" ){
-            // res.y >0 means touched by something on the bottom
-            // which mean at top position for this one
-            if (this.alive && (res.y > 0) && obj.falling) {
-                this.flicker(45);
-            	me.game.remove(this);
-            }
+        
+        if(this.falling){
+        	this.vel.y = 0;
         }
         
-        if(obj.type == "Bullet"){
-            me.game.remove(this);
+        if(this.onladder){
+        	this.vel.y = 0;
         }
         
     },
@@ -64,6 +100,7 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
             // make it walk
             this.flipX(this.walkLeft);
             this.vel.x += (this.walkLeft) ? -this.accel.x * me.timer.tick : this.accel.x * me.timer.tick;
+            this.vel.y = 0;
                  
         } else {
             this.vel.x = 0;
@@ -80,7 +117,7 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
         }
         return false;
     }
-});
+}));
 
 var wheelie = entity("EnemyEntity", me.ObjectEntity.extend({
     init: function(x, y, settings) {
@@ -237,3 +274,4 @@ var lawnmowerEntity = entity("lawnmower", me.ObjectEntity.extend({
 
 enemyEntity.push(wheelie);
 enemyEntity.push(enemyBird);
+enemyEntity.push(enemyWindow);
