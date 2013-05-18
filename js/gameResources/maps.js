@@ -11,7 +11,11 @@ gameResources.addMap = function addMap(name, source){
 };
 
 gameResources.addMap("egypt","data/egypt.tmx");
+<<<<<<< HEAD
 gameResources.addMap("spacemap","data/spacemap.tmx");
+=======
+//gameResources.addMap("spacemap","data/spacemap.tmx");
+>>>>>>> ee4033adb39939ad4e283e6e519514b339d0fcc0
 gameResources.addMap("renaisannce","data/Renaisannce.tmx");
 gameResources.addMap("spacemap","data/spacemap.tmx");
 gameResources.addMap("level2","data/level2.tmx");
