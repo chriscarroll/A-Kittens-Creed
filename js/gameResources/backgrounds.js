@@ -12,4 +12,4 @@ gameResources.addBackground("area01_bkg0","data/area01_parallax/area01_bkg0.png"
 gameResources.addBackground("area01_bkg1","data/area01_parallax/area01_bkg1.png");
 gameResources.addBackground("level1background","data/background/level1background.jpg");
 gameResources.addBackground("eyjback","data/background/eyjback.png");
-gameResources.addBackground("spacewalkBackground","data/background/spacewalkBackground.jpg");
+gameResources.addBackground("spacewalkBackground","data/backspaccc3.jpg");

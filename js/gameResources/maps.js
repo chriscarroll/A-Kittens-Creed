@@ -10,8 +10,8 @@ gameResources.addMap = function addMap(name, source){
 	});
 };
 
-gameResources.addMap("egypt","data/Renaisannce.tmx");
-//gameResources.addMap("spacemap","data/spacemap.tmx");
+gameResources.addMap("egypt","data/egypt.tmx");
+gameResources.addMap("spacemap","data/spacemap.tmx");
 gameResources.addMap("renaisannce","data/Renaisannce.tmx");
 gameResources.addMap("spacemap","data/spacemap.tmx");
 gameResources.addMap("level2","data/level2.tmx");
