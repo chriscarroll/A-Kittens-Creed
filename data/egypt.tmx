@@ -44,7 +44,19 @@
     <property name="spritewidth" value="101"/>
    </properties>
   </object>
-  <object x="20" y="19" width="967" height="659"/>
+  <object name="mirror2" x="20" y="19" width="967" height="659">
+   <properties>
+    <property name="" value=""/>
+    <property name="image" value="mirror2"/>
+    <property name="spritewidth" value="101"/>
+   </properties>
+  </object>
+  <object name="mirror2" x="364" y="625" width="193" height="65">
+   <properties>
+    <property name="image" value="mirror2"/>
+    <property name="spritewidth" value="70"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="collision" width="31" height="22">
   <data encoding="base64">

@@ -169,6 +169,39 @@ var PlayerDeath = entity("PlayerDeath", me.InvisibleEntity.extend({
 }));
 
 /*----------------
+a Mirror entity
+------------------------ */
+MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
+   // extending the init function is not mandatory
+   // unless you need to add some extra initialization
+   init: function(x, y, settings) {
+       // call the parent constructor
+       this.parent(x, y, settings);
+       this.type = "mirror2";
+	   this.collidable = true;
+   }
+   
+   // onCollision: function(res, obj) {
+       //do something when collide
+      // if(obj.name == "mainplayer" ){
+  	   // /*	me.audio.play("cling");
+  	   	
+  	   	// localStorage.checkpointLevel = me.levelDirector.getCurrentLevelId();
+    		// localStorage.checkpointX = this.checkpointX;
+    		// localStorage.checkpointY = this.checkpointY;
+    		// localStorage.checkpointScore = me.game.HUD.getItemValue("score");
+    	//	make sure it cannot be collected "again"
+    		// this.collidable = false;
+         
+    		//remove it
+    		// me.game.remove(this); */
+			
+			// alert("hit!");
+    // }
+
+}));
+
+/*----------------
 a Checkpoint entity
 ------------------------ */
 var checkpointEntity = entity("Checkpoint", me.CollectableEntity.extend({
@@ -340,3 +373,4 @@ itemEntity.push(healthEntity);
 itemEntity.push(appleEntity);
 itemEntity.push(teleporterEntity);
 itemEntity.push(ropeEntity);
+itemEntity.push(MirrorEntity);
