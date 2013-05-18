@@ -26,8 +26,11 @@ var enemyWindow = entity("EnemyWindow", me.ObjectEntity.extend({
     // obj parameter corresponds to the other object (typically the player) touching this one
     onCollision: function(res, obj) {
         if(this.isCurrentAnimation("popUp") || this.isCurrentAnimation("popDown")){
-        	if(obj.name == "mainplayer" ){
-           		counter = counter - 30;
+        	if(obj.name == "mainplayer" && !obj.isFlickering()){
+           		maxtimeSecs = maxtimeSecs - 15;
+	           	if(maxtimeSecs < 0){
+	           		maxtimeSecs = 0;
+	           	}
             }
         }
            
@@ -111,8 +114,11 @@ var enemyBird = entity("EnemyBird", me.ObjectEntity.extend({
         if(this.onladder){
         	this.vel.y = 0;
         }
-        if(obj.name == "mainplayer" ){
-           	counter = counter - 30;
+        if(obj.name == "mainplayer" && !obj.isFlickering()){
+           	maxtimeSecs = maxtimeSecs - 15;
+           	if(maxtimeSecs < 0){
+           		maxtimeSecs = 0;
+           	}
         }
         
     },
