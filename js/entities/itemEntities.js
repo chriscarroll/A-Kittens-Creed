@@ -204,7 +204,7 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
    
    onCollision: function(res, obj) {
        //do something when collide
-      if(obj.name == "mainplayer" ){		
+    if(obj.name == "mainplayer" ){		
 		//alert("hit!");
 		if(obj.vel.x > 0){
 			this.pos.x+=3;
@@ -212,7 +212,11 @@ MirrorEntity = entity("mirror2", me.ObjectEntity.extend({
 		else if(obj.vel.x < 0){
 			this.pos.x-=3;
 		}
-    }
+	}
+	else if(obj.name == "sunlight" ){		
+		//Send the sunlight particles going vertically now!
+		
+	}
 
 }}));
 
