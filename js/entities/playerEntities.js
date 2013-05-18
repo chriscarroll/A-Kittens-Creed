@@ -227,6 +227,8 @@ playerEntity1 = entity("mainPlayer", me.ObjectEntity.extend( {
 		maxtimeMins = 1;
 		maxtimeSecs = 59;
 		
+		this.isKeyGotten = false;
+		
 		counter = 0;
 		
         // call the constructor

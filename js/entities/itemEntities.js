@@ -210,15 +210,15 @@ KeyEntity = entity("key", me.ObjectEntity.extend({
    
    onCollision: function(res, obj) {
        //do something when collide
-      if(obj.name == "mainplayer" ){		
+      if(obj.name == "sunlight"){		
 		//alert("hit!");
-		if(obj.vel.x > 0){
-			this.pos.x+=3;
+		this.pos.y-=10;
 		}
-		else if(obj.vel.x < 0){
-			this.pos.x-=3;
+		else if(obj.name == "mainPlayer")
+		{
+			//player has gotten the key! they should now be able to open the door
+			obj.isKeyGotten = true;
 		}
-    }
 
 }}));
 
